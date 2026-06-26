@@ -1,1 +1,53 @@
-<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>DeutschQuest 1.0</title><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#0f623f"><link rel="icon" href="./icons/icon.svg"><link rel="stylesheet" href="./css/styles.css"></head><body><div class="app"><aside class="sidebar"><div class="brand"><div class="logo">🧭</div><div><h1>DeutschQuest</h1><small>Deine DACH-Reise</small></div></div><button class="navbtn active">🏠 Übersicht</button><button class="navbtn">📚 Bibliothek</button><button class="navbtn">🎮 Wortschatz Trainer</button><button class="navbtn">🎒 QuestPass</button><button class="navbtn">⚙️ Einstellungen</button><div class="profile"><b>👩‍🎓 Emilia</b><br><small>Level 4 · <span id="sideXP">0</span> XP</small></div></aside><main class="main"><section class="hero" id="hero"><div class="hero-content"><h2 id="heroTitle">Freiburg</h2><p><b id="heroLesson">Deutschprofis A1 · Lektion 1</b></p><p id="heroText">Wähle Buch, Lektion und Wörter. Danach startet die Übung.</p><div class="pills"><div class="pill">☀️ Stadtbild</div><div class="pill">⭐ <span id="xpTop">0</span> XP</div><div class="pill">📘 <span id="totalWords"></span> Wörter</div></div></div></section><section class="workspace"><div class="panel"><h3>1. Buch und Lektion wählen</h3><div class="bookrow" id="bookButtons"></div><div class="lesson-list" id="lessonList"></div></div><div class="panel"><h3>2. Wörter auswählen <span class="small" id="countBadge"></span></h3><div class="controls"><button class="secondary" onclick="selectAll(true)">Alle</button><button class="secondary" onclick="selectAll(false)">Keine</button><button class="secondary" onclick="randomTen()">10 Zufall</button></div><div class="word-list" id="wordList"></div></div><div class="panel"><h3>3. Üben</h3><div class="moderow"><button class="active" onclick="setMode('mc',this)">Multiple Choice</button><button onclick="setMode('flash',this)">Flashcards</button><button onclick="setMode('write',this)">Schreiben</button></div><button style="width:100%;margin-bottom:8px" onclick="startSelected()">▶ Übung starten</button><div class="practice" id="practice"><div><h2>Bereit?</h2><p>Wähle eine Lektion und starte die Übung.</p></div></div><div class="stats"><div class="stat">✅<br><b id="right">0</b></div><div class="stat">🎯<br><b id="done">0</b></div><div class="stat">⭐<br><b id="xp">0</b></div><div class="stat">📚<br><b id="selStat">0</b></div></div></div></section><div class="footer"><span>DeutschQuest 1.0 · PWA Starter</span><span>GitHub Pages ready</span></div></main></div><button id="installBtn" class="install hidden">Instalar DeutschQuest</button><script src="./js/app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DeutschQuest 1.1</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#0f623f">
+<link rel="icon" href="./icons/icon.svg">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+ <div class="brand"><div class="logo">🧭</div><div><h1>DeutschQuest</h1><small>Deine DACH-Reise</small></div></div>
+ <button class="navbtn" data-section="overview" onclick="setSection('overview')">🏠 Übersicht</button>
+ <button class="navbtn" data-section="bibliothek" onclick="setSection('bibliothek')">📚 Bibliothek</button>
+ <button class="navbtn" data-section="trainer" onclick="setSection('trainer')">🎮 Wortschatz Trainer</button>
+ <button class="navbtn" data-section="questpass" onclick="setSection('questpass')">🎒 QuestPass</button>
+ <button class="navbtn" data-section="settings" onclick="setSection('settings')">⚙️ Einstellungen</button>
+ <div class="profile"><b>👩‍🎓 Emilia</b><br><small>Level 4 · <span id="sideXP">0</span> XP</small></div>
+</aside>
+<main class="main">
+ <section class="hero" id="hero">
+  <div class="hero-content">
+   <h2 id="heroTitle">Freiburg</h2>
+   <p><b id="heroLesson">Deutschprofis A1 · Lektion 1</b></p>
+   <p id="heroText">Wähle Buch, Lektion und Wörter. Danach startet die Übung.</p>
+   <div class="pills"><div class="pill">☀️ Stadtbild</div><div class="pill">⭐ <span id="xpTop">0</span> XP</div><div class="pill">📘 <span id="totalWords"></span> Wörter</div></div>
+  </div>
+ </section>
+
+ <section class="view hidden" id="view-overview"><div class="view-inner" id="overviewContent"></div></section>
+ <section class="view hidden" id="view-bibliothek"><div class="view-inner" id="bibliothekContent"></div></section>
+
+ <section class="view" id="view-trainer">
+  <section class="workspace">
+   <div class="panel"><h3>1. Buch und Lektion wählen</h3><div class="bookrow" id="bookButtons"></div><div class="lesson-list" id="lessonList"></div></div>
+   <div class="panel"><h3>2. Wörter auswählen <span class="small" id="countBadge"></span></h3><div class="controls"><button class="secondary" onclick="selectAll(true)">Alle</button><button class="secondary" onclick="selectAll(false)">Keine</button><button class="secondary" onclick="randomTen()">10 Zufall</button></div><div class="word-list" id="wordList"></div></div>
+   <div class="panel"><h3>3. Üben</h3><div class="moderow"><button class="active" onclick="setMode('mc',this)">Multiple Choice</button><button onclick="setMode('flash',this)">Flashcards</button><button onclick="setMode('write',this)">Schreiben</button></div><button style="width:100%;margin-bottom:8px" onclick="startSelected()">▶ Übung starten</button><div class="practice" id="practice"><div><h2>Bereit?</h2><p>Wähle eine Lektion und starte die Übung.</p></div></div><div class="stats"><div class="stat">✅<br><b id="right">0</b></div><div class="stat">🎯<br><b id="done">0</b></div><div class="stat">⭐<br><b id="xp">0</b></div><div class="stat">📚<br><b id="selStat">0</b></div></div></div>
+  </section>
+ </section>
+
+ <section class="view hidden" id="view-questpass"><div class="view-inner" id="questpassContent"></div></section>
+ <section class="view hidden" id="view-settings"><div class="view-inner" id="settingsContent"></div></section>
+
+ <div class="footer"><span>DeutschQuest 1.1 · navegación activa</span><span>GitHub Pages ready</span></div>
+</main>
+</div>
+<button id="installBtn" class="install hidden">Instalar DeutschQuest</button>
+<script src="./js/app.js"></script>
+</body>
+</html>

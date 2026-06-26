@@ -1,7 +1,3 @@
-# DeutschQuest 1.0
+# DeutschQuest 1.1
 
-PWA lista para GitHub Pages.
-
-Vocabulario cargado: 801 entradas.
-
-Sube todo el contenido de esta carpeta a la raíz del repositorio.
+Versión con navegación activa: Übersicht, Bibliothek, Wortschatz Trainer, QuestPass y Einstellungen.
