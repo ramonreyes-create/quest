@@ -1,0 +1,15 @@
+{
+  "name": "DeutschQuest 1.0",
+  "short_name": "DeutschQuest",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f623f",
+  "theme_color": "#0f623f",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

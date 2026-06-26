@@ -1,0 +1,86 @@
+{
+  "titles": {
+    "Deutschprofis A1": {
+      "1": "Hallo, ich bin ...",
+      "2": "Begrüßungen",
+      "3": "Das mache ich gern",
+      "4": "Meine Familie",
+      "5": "Daher komme ich",
+      "6": "Dinge beschreiben",
+      "7": "Freizeit",
+      "8": "Essen und Trinken",
+      "9": "Mein Zuhause",
+      "10": "Geschenke",
+      "11": "Meine Lieblingstiere",
+      "12": "Mein Jahr"
+    },
+    "Deutschprofis A2": {
+      "1": "Meine Erlebnisse",
+      "2": "Meine Freunde",
+      "3": "Das kann ich am besten",
+      "4": "Wie geht’s denn so?",
+      "5": "Unterwegs",
+      "6": "Einkaufen",
+      "7": "Wohnen",
+      "8": "Essen und Trinken",
+      "9": "Medien",
+      "10": "Mittelalter",
+      "11": "Reisen",
+      "12": "Schule"
+    },
+    "Deutschprofis B1": {
+      "1": "Lust auf Sport?",
+      "2": "Pop, Rock oder Klassik?",
+      "3": "Mensch, Natur, Technik",
+      "4": "Das wünsche ich mir",
+      "5": "Essen",
+      "6": "Zusammen leben",
+      "7": "Umwelt braucht Schutz",
+      "8": "Leben in 100 Jahren",
+      "9": "Wir machen Medien",
+      "10": "Du wirst gebraucht"
+    }
+  },
+  "cities": {
+    "Deutschprofis A1": {
+      "1": "Freiburg",
+      "2": "Freiburg",
+      "3": "Freiburg",
+      "4": "Freiburg",
+      "5": "Freiburg",
+      "6": "Freiburg",
+      "7": "Friedenweiler",
+      "8": "Friedenweiler",
+      "9": "Friedenweiler",
+      "10": "Friedenweiler",
+      "11": "Friedenweiler",
+      "12": "Friedenweiler"
+    },
+    "Deutschprofis A2": {
+      "1": "Salzburg",
+      "2": "Salzburg",
+      "3": "Salzburg",
+      "4": "Wien",
+      "5": "Wien",
+      "6": "Wien",
+      "7": "Wien",
+      "8": "Wien",
+      "9": "Wien",
+      "10": "Wien",
+      "11": "Innsbruck",
+      "12": "Innsbruck"
+    },
+    "Deutschprofis B1": {
+      "1": "Zürich",
+      "2": "Zürich",
+      "3": "Friedenweiler",
+      "4": "Zürich",
+      "5": "Zürich",
+      "6": "Bern",
+      "7": "Bern",
+      "8": "Bern",
+      "9": "Zürich",
+      "10": "Bern"
+    }
+  }
+}
