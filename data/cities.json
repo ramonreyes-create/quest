@@ -1,23 +1,11 @@
-{
-  "Freiburg": {
-    "caption": "Freiburg im Breisgau · Schwarzwald · Münster"
-  },
-  "Friedenweiler": {
-    "caption": "Friedenweiler · Schwarzwald"
-  },
-  "Salzburg": {
-    "caption": "Salzburg · Mozart · Alpen"
-  },
-  "Wien": {
-    "caption": "Wien · Kaffeehäuser · Kultur"
-  },
-  "Zürich": {
-    "caption": "Zürich · See · Altstadt"
-  },
-  "Bern": {
-    "caption": "Bern · Aare · Altstadt"
-  },
-  "Innsbruck": {
-    "caption": "Innsbruck · Alpen"
-  }
-}
+[
+  {"id":"freiburg","name":"Freiburg","country":"Deutschland","emoji":"🌲","x":31,"y":78,"lesson":"Deutschprofis A1 · Lektion 1","theme":"Hallo! Ich heiße...","culture":"Altstadt, Bächle und Schwarzwald","progress":100,"status":"completed"},
+  {"id":"stuttgart","name":"Stuttgart","country":"Deutschland","emoji":"🚗","x":42,"y":67,"lesson":"Deutschprofis A1 · Lektion 2","theme":"Schule und Klasse","culture":"Mercedes-Benz, Wilhelma und Weinberge","progress":55,"status":"active"},
+  {"id":"heidelberg","name":"Heidelberg","country":"Deutschland","emoji":"🏰","x":49,"y":58,"lesson":"Deutschprofis A1 · Lektion 3","theme":"Familie und Freunde","culture":"Schloss, Neckar und Universität","progress":0,"status":"unlocked"},
+  {"id":"frankfurt","name":"Frankfurt","country":"Deutschland","emoji":"🏙️","x":56,"y":48,"lesson":"Deutschprofis A1 · Lektion 4","theme":"Essen und Trinken","culture":"Mainhattan, Flughafen und Apfelwein","progress":0,"status":"locked"},
+  {"id":"koeln","name":"Köln","country":"Deutschland","emoji":"⛪","x":46,"y":35,"lesson":"Deutschprofis A2 · Lektion 1","theme":"Freizeit und Hobbys","culture":"Dom, Rhein und Karneval","progress":0,"status":"locked"},
+  {"id":"berlin","name":"Berlin","country":"Deutschland","emoji":"🐻","x":67,"y":21,"lesson":"Deutschprofis A2 · Lektion 2","theme":"Stadt und Orientierung","culture":"Brandenburger Tor, Museen und Geschichte","progress":0,"status":"locked"},
+  {"id":"salzburg","name":"Salzburg","country":"Österreich","emoji":"🎵","x":69,"y":67,"lesson":"Deutschprofis A2 · Lektion 3","theme":"Musik und Kultur","culture":"Mozart, Festung und Alpen","progress":0,"status":"locked"},
+  {"id":"wien","name":"Wien","country":"Österreich","emoji":"☕","x":83,"y":58,"lesson":"Deutschprofis B1 · Einheit 1","theme":"Reisen und Begegnungen","culture":"Kaffeehaus, Ringstraße und Schloss Schönbrunn","progress":0,"status":"locked"},
+  {"id":"zuerich","name":"Zürich","country":"Schweiz","emoji":"🏔️","x":38,"y":88,"lesson":"Deutschprofis B1 · Einheit 2","theme":"Medien und Alltag","culture":"See, Altstadt und Schweizerdeutsch","progress":0,"status":"locked"}
+]

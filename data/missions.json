@@ -1,0 +1,8 @@
+[
+  {"title":"10 Wörter trainieren","reward":"+30 XP","done":false},
+  {"title":"1 Hörübung machen","reward":"+40 XP","done":false},
+  {"title":"5 Sätze schreiben","reward":"+50 XP","done":false},
+  {"title":"QuestPass öffnen","reward":"+10 XP","done":true},
+  {"title":"Eine Stadt wiederholen","reward":"+25 XP","done":false},
+  {"title":"Perfekt Challenge","reward":"+80 XP","done":false}
+]
