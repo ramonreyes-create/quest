@@ -1,0 +1,24 @@
+{
+  "version":"3.0.1",
+  "cities":[
+    {"id":"freiburg","name":"Freiburg","country":"🇩🇪","unit":"A1 Lektion 1","theme":"Begrüßung, Schule, Familie","image":"🏘️","unlocked":true},
+    {"id":"schwarzwald","name":"Schwarzwald","country":"🇩🇪","unit":"A1 Lektion 2","theme":"Farben, Tiere, Natur","image":"🌲","unlocked":false},
+    {"id":"stuttgart","name":"Stuttgart","country":"🇩🇪","unit":"A1 Lektion 3","theme":"Hobbys und Freizeit","image":"🚗","unlocked":false},
+    {"id":"heidelberg","name":"Heidelberg","country":"🇩🇪","unit":"A1 Lektion 4","theme":"Schule und Alltag","image":"🏰","unlocked":false},
+    {"id":"frankfurt","name":"Frankfurt","country":"🇩🇪","unit":"A1 Lektion 5","theme":"Einkaufen und Verkehr","image":"🏙️","unlocked":false},
+    {"id":"koeln","name":"Köln","country":"🇩🇪","unit":"A1 Lektion 6","theme":"Feste und Kultur","image":"⛪","unlocked":false},
+    {"id":"berlin","name":"Berlin","country":"🇩🇪","unit":"A2","theme":"Stadtleben und Geschichte","image":"🐻","unlocked":false},
+    {"id":"salzburg","name":"Salzburg","country":"🇦🇹","unit":"A2","theme":"Musik und Reisen","image":"🎼","unlocked":false},
+    {"id":"wien","name":"Wien","country":"🇦🇹","unit":"B1","theme":"Essen und Kaffeehaus","image":"☕","unlocked":false},
+    {"id":"zuerich","name":"Zürich","country":"🇨🇭","unit":"B1","theme":"Umwelt und Medien","image":"🏔️","unlocked":false}
+  ],
+  "questions":[
+    {"city":"freiburg","type":"mc","q":"Was bedeutet „die Stadt“?","a":"la ciudad","options":["la ciudad","la escuela","la familia","el cuaderno"]},
+    {"city":"freiburg","type":"mc","q":"Was bedeutet „die Schule“?","a":"el colegio","options":["el colegio","la ciudad","el libro","la calle"]},
+    {"city":"freiburg","type":"mc","q":"Was bedeutet „lernen“?","a":"aprender","options":["aprender","jugar","comprar","viajar"]},
+    {"city":"freiburg","type":"mc","q":"Was bedeutet „sprechen“?","a":"hablar","options":["hablar","leer","escribir","escuchar"]},
+    {"city":"freiburg","type":"mc","q":"Was bedeutet „das Heft“?","a":"el cuaderno","options":["el cuaderno","el lápiz","la mesa","la puerta"]}
+  ],
+  "missions":["10 Wörter üben","1 Mini-Challenge schaffen","QuestPass öffnen"],
+  "badges":["Startklar","Wortschatzmeister","Freiburg abgeschlossen"]
+}
