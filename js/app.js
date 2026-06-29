@@ -4,7 +4,10 @@ const state = {
   streak: Number(localStorage.getItem('dq_streak') || 7),
   selectedCity: localStorage.getItem('dq_city') || 'stuttgart',
   cities: [],
-  missions: []
+  missions: [],
+  learning: {},
+  currentModule: 'wortschatz',
+  currentQuestion: 0
 };
 
 const $ = (q) => document.querySelector(q);
@@ -13,6 +16,7 @@ const $$ = (q) => [...document.querySelectorAll(q)];
 async function init(){
   state.cities = await fetch('data/cities.json').then(r=>r.json()).catch(()=>[]);
   state.missions = await fetch('data/missions.json').then(r=>r.json()).catch(()=>[]);
+  state.learning = await fetch('data/learning.json').then(r=>r.json()).catch(()=>({}));
   const savedCities = localStorage.getItem('dq_cities');
   if(savedCities) state.cities = JSON.parse(savedCities);
   bindNavigation();
@@ -34,13 +38,14 @@ function bindNavigation(){
   $$('[data-go]').forEach(btn=>btn.addEventListener('click',()=>showView(btn.dataset.go)));
   $('#menuBtn').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
   $('#completeCityBtn').addEventListener('click',completeSelectedCity);
+  document.addEventListener('click', handleLearningClick);
 }
 
 function showView(id){
   $$('.view').forEach(v=>v.classList.remove('active'));
   $('#'+id).classList.add('active');
   $$('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.view === id));
-  const titles={dashboard:'Dashboard',map:'DACH Karte',questpass:'QuestPass',missionen:'Missionen',profil:'Profil'};
+  const titles={dashboard:'Dashboard',map:'DACH Karte',questpass:'QuestPass',lernen:'Lernen',missionen:'Missionen',profil:'Profil'};
   $('#pageTitle').textContent=titles[id]||'DeutschQuest';
   $('#sidebar').classList.remove('open');
   renderAll();
@@ -65,7 +70,7 @@ function renderAll(){
   $('#overallProgress').textContent=overall+'%';
   $('#visitedCount').textContent=completed;
   $('#stampCount').textContent=completed;
-  renderCurrentCity(); renderMissions(); renderMap(); renderCityPanel(); renderPassport();
+  renderCurrentCity(); renderMissions(); renderMap(); renderCityPanel(); renderPassport(); renderLearning();
 }
 
 function renderCurrentCity(){
@@ -95,7 +100,7 @@ function lineBetween(a,b){
 function renderCityPanel(){
   const c=getSelectedCity();
   const locked=c.status==='locked';
-  $('#cityPanel').innerHTML = `${citySummary(c)}<div class="module-grid"><div class="module">📖 Wortschatz</div><div class="module">🎧 Hören</div><div class="module">✍️ Schreiben</div><div class="module">🏆 Challenge</div></div><button class="primary" style="width:100%;margin-top:16px" ${locked?'disabled':''}>${locked?'Noch gesperrt':'Lektion starten'}</button>`;
+  $('#cityPanel').innerHTML = `${citySummary(c)}<div class="module-grid"><button class="module" data-learn-go="wortschatz">📖 Wortschatz</button><button class="module" data-learn-go="grammatik">🧩 Grammatik</button><button class="module" data-learn-go="schreiben">✍️ Schreiben</button><button class="module" data-learn-go="challenge">🏆 Challenge</button></div><button class="primary" style="width:100%;margin-top:16px" ${locked?'disabled':''}>${locked?'Noch gesperrt':'Lektion starten'}</button>`;
 }
 function renderPassport(){
   $('#passport').innerHTML = state.cities.map(c=>`<article class="stamp ${c.status==='completed'?'':'locked'}"><div class="seal">${c.status==='completed'?'✅':c.status==='active'?'🟡':'🔒'}</div><h3>${c.name}</h3><p>${c.country}</p><p>${c.status==='completed'?'Stempel gesammelt':'Noch kein Stempel'}</p><small>${c.lesson}</small></article>`).join('');
@@ -111,3 +116,57 @@ function completeSelectedCity(){
 function getSelectedCity(){ return state.cities.find(c=>c.id===state.selectedCity) || state.cities[0]; }
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2300); }
 init();
+
+
+function getLearningSet(){
+  return state.learning[state.selectedCity] || state.learning.default || {title:'Lernen', wortschatz:[], grammatik:[], schreiben:[], challenge:[]};
+}
+
+function renderLearning(){
+  const card = $('#learningCard');
+  if(!card) return;
+  const city = getSelectedCity();
+  const set = getLearningSet();
+  $('#learningCityPill').textContent = city.name + ' · ' + (set.title || 'Deutschprofis');
+  $$('.module-tab').forEach(t=>t.classList.toggle('active', t.dataset.module === state.currentModule));
+  const list = set[state.currentModule] || [];
+  if(!list.length){ card.innerHTML = '<h3>Noch keine Aufgaben</h3><p>Dieses Modul wird im nächsten Sprint ergänzt.</p>'; return; }
+  const q = list[state.currentQuestion % list.length];
+  let body='';
+  if(state.currentModule === 'wortschatz'){
+    body = `<div class="big-word">${q.de}</div><p>Was bedeutet das?</p>${optionButtons(q.options, q.answer)}`;
+  } else if(state.currentModule === 'schreiben'){
+    const shuffled = [...q.parts].sort(()=>Math.random()-.5);
+    body = `<p>${q.prompt}</p><div class="word-bank">${shuffled.map(w=>`<button class="word-chip" data-word="${w}">${w}</button>`).join('')}</div><div class="sentence-box" id="sentenceBox"></div><button class="primary" data-check-sentence="${q.answer}">Prüfen</button>`;
+  } else {
+    body = `<p class="question-text">${q.prompt}</p>${optionButtons(q.options, q.answer)}`;
+  }
+  card.innerHTML = `<span class="eyebrow">${set.title}</span><h3>${moduleName(state.currentModule)}</h3>${body}<div class="learning-footer"><button class="secondary" data-next-question>Weiter</button><small>+20 XP bei richtiger Antwort</small></div>`;
+}
+function moduleName(m){ return {wortschatz:'Wortschatz', grammatik:'Grammatik', schreiben:'Schreiben', challenge:'Mini-Challenge'}[m]||m; }
+function optionButtons(options, answer){ return `<div class="answer-grid">${options.map(o=>`<button class="answer-btn" data-answer="${answer}" data-choice="${o}">${o}</button>`).join('')}</div>`; }
+
+function handleLearningClick(e){
+  const tab=e.target.closest('.module-tab');
+  if(tab){ state.currentModule=tab.dataset.module; state.currentQuestion=0; renderLearning(); return; }
+  const learnGo=e.target.closest('[data-learn-go]');
+  if(learnGo){ state.currentModule=learnGo.dataset.learnGo; showView('lernen'); renderLearning(); return; }
+  const ans=e.target.closest('.answer-btn');
+  if(ans){
+    if(ans.dataset.choice===ans.dataset.answer){ rewardLearning(ans); } else { ans.classList.add('wrong'); state.lives=Math.max(0,state.lives-1); persist(); $('#lives').textContent=state.lives; toast('Fast! Versuch es noch einmal.'); }
+    return;
+  }
+  const chip=e.target.closest('.word-chip');
+  if(chip){ $('#sentenceBox').textContent = ($('#sentenceBox').textContent + ' ' + chip.dataset.word).trim(); chip.disabled=true; return; }
+  const check=e.target.closest('[data-check-sentence]');
+  if(check){
+    if(($('#sentenceBox').textContent||'').trim()===check.dataset.checkSentence){ rewardLearning(check); } else { toast('Achte auf den Satzbau.'); }
+    return;
+  }
+  if(e.target.closest('[data-next-question]')){ state.currentQuestion++; renderLearning(); }
+}
+function rewardLearning(el){
+  el.classList.add('correct'); state.xp += 20;
+  const c = getSelectedCity(); c.progress = Math.min(100, (c.progress||0)+10); if(c.status==='unlocked') c.status='active';
+  persist(); renderAll(); toast('Richtig! +20 XP');
+}

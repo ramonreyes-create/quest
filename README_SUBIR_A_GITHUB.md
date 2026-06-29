@@ -1,22 +1,30 @@
-# DeutschQuest 3.0 – Sprint 2
+# DeutschQuest 3.0 – Sprint 3
 
 ## Qué incluye
-- DACH Karte interactiva
-- 9 ciudades: Freiburg, Stuttgart, Heidelberg, Frankfurt, Köln, Berlin, Salzburg, Wien, Zürich
-- QuestPass con sellos
-- progreso local con localStorage
-- botón para completar ciudad y desbloquear la siguiente
-- tema claro/oscuro
-- PWA básica
 
-## Cómo subir
-Sube el CONTENIDO de esta carpeta a la raíz del repositorio `quest`.
-No subas la carpeta `deutschquest-3.0-sprint2` completa.
+- Todo el Sprint 2.
+- Nueva sección **Lernen**.
+- Módulos funcionales:
+  - Wortschatz
+  - Grammatik
+  - Schreiben
+  - Mini-Challenge
+- Actividades conectadas a la ciudad seleccionada.
+- XP por respuesta correcta.
+- Pérdida de vidas por error.
+- Progreso local por ciudad.
+- Datos editables en `data/learning.json`.
 
-Luego abre:
-https://ramonreyes-create.github.io/quest/?v=3.2
+## Cómo subir a GitHub
 
-Si no se actualiza:
-1. Chrome > F12 > Application > Service Workers > Unregister
-2. Application > Storage > Clear site data
-3. Recargar con Ctrl + Shift + R
+1. Descomprime el ZIP.
+2. Abre la carpeta `deutschquest-3.0-sprint3`.
+3. Sube el **contenido** a la raíz del repositorio `quest`.
+4. Reemplaza los archivos anteriores cuando GitHub lo pregunte.
+5. Abre la página con:
+
+```text
+https://ramonreyes-create.github.io/quest/?v=3.3
+```
+
+Si no se actualiza, borra caché o desregistra el service worker.

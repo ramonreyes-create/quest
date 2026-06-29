@@ -1,0 +1,46 @@
+{
+  "stuttgart": {
+    "title": "Deutschprofis A1 · Start",
+    "wortschatz": [
+      {"de":"Hallo!", "es":"¡Hola!", "options":["¡Hola!","Gracias","Adiós"], "answer":"¡Hola!"},
+      {"de":"Guten Morgen", "es":"Buenos días", "options":["Buenas noches","Buenos días","Hasta luego"], "answer":"Buenos días"},
+      {"de":"Tschüss", "es":"Chao", "options":["Chao","Por favor","Bienvenido"], "answer":"Chao"}
+    ],
+    "grammatik": [
+      {"prompt":"Ergänze: Ich ___ Lea.", "options":["bin","bist","ist"], "answer":"bin"},
+      {"prompt":"Ergänze: Du ___ aus Chile.", "options":["bin","bist","sind"], "answer":"bist"}
+    ],
+    "schreiben": [
+      {"prompt":"Ordne den Satz:", "parts":["Ich","heiße","Lea"], "answer":"Ich heiße Lea"},
+      {"prompt":"Ordne den Satz:", "parts":["Ich","komme","aus Chile"], "answer":"Ich komme aus Chile"}
+    ],
+    "challenge": [
+      {"prompt":"Was passt? — Guten Morgen!", "options":["Gute Nacht!","Guten Morgen!","Danke!"], "answer":"Guten Morgen!"}
+    ]
+  },
+  "freiburg": {
+    "title": "Deutschprofis A1 · Familie und Schule",
+    "wortschatz": [
+      {"de":"die Schule", "es":"el colegio", "options":["el colegio","la ciudad","la familia"], "answer":"el colegio"},
+      {"de":"das Heft", "es":"el cuaderno", "options":["la mochila","el cuaderno","el lápiz"], "answer":"el cuaderno"},
+      {"de":"die Freundin", "es":"la amiga", "options":["la amiga","la profesora","la hermana"], "answer":"la amiga"}
+    ],
+    "grammatik": [
+      {"prompt":"Ergänze: Das ___ mein Heft.", "options":["ist","bist","sind"], "answer":"ist"},
+      {"prompt":"Ergänze: Wir ___ in der Schule.", "options":["bin","seid","sind"], "answer":"sind"}
+    ],
+    "schreiben": [
+      {"prompt":"Ordne den Satz:", "parts":["Das","ist","meine Schule"], "answer":"Das ist meine Schule"}
+    ],
+    "challenge": [
+      {"prompt":"Welche Antwort ist richtig? — Wie heißt du?", "options":["Ich heiße Lea.","Ich bin zwölf Jahre.","Ich komme Schule."], "answer":"Ich heiße Lea."}
+    ]
+  },
+  "default": {
+    "title":"Deutschprofis Modul",
+    "wortschatz":[{"de":"lernen","es":"aprender","options":["aprender","jugar","viajar"],"answer":"aprender"}],
+    "grammatik":[{"prompt":"Ergänze: Ich ___ Deutsch.","options":["lerne","lernst","lernen"],"answer":"lerne"}],
+    "schreiben":[{"prompt":"Ordne den Satz:","parts":["Ich","lerne","Deutsch"],"answer":"Ich lerne Deutsch"}],
+    "challenge":[{"prompt":"Was passt?","options":["Ich lerne Deutsch.","Deutsch ich lerne.","Lerne ich Deutsch."],"answer":"Ich lerne Deutsch."}]
+  }
+}
