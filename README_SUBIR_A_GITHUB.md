@@ -1,44 +1,40 @@
-# DeutschQuest 3.0 Starter
+# DeutschQuest 3.0 – Sprint 1
 
 ## Cómo subirlo
 
-Sube el contenido de esta carpeta a la raíz del repositorio `quest`.
+1. Descomprime `deutschquest-3.0-sprint1.zip`.
+2. Entra a la carpeta descomprimida.
+3. Sube **el contenido** a la raíz del repositorio `quest`.
+4. No subas la carpeta completa como una carpeta nueva.
+5. Si GitHub pregunta si reemplazar archivos, acepta reemplazar:
+   - `index.html`
+   - `manifest.json`
+   - `service-worker.js`
+   - carpeta `css`
+   - carpeta `js`
+   - carpeta `data`
 
-La raíz debe quedar así:
+## Después de subir
 
-```text
-quest/
-├── index.html
-├── manifest.json
-├── service-worker.js
-├── css/
-├── js/
-├── data/
-├── assets/
-└── modules/
-```
+Abre la página con:
 
-## Importante
+`https://ramonreyes-create.github.io/quest/?v=3.1`
 
-Esta versión usa una caché nueva: `deutschquest-3-0-1`.
-Si el navegador muestra una versión antigua, abre la página con:
+Si no cambia:
 
-```text
-?v=3.0.1
-```
+- Chrome → F12 → Application → Service Workers → Unregister
+- Application → Storage → Clear site data
+- Recargar con Ctrl + Shift + R
 
-Ejemplo:
+## Qué incluye Sprint 1
 
-```text
-https://ramonreyes-create.github.io/quest/?v=3.0.1
-```
-
-## Qué incluye
-
-- Dashboard 3.0
-- Mapa DACH
+- Dashboard mejorado
+- Menú lateral
+- Tema claro/oscuro
+- Perfil de alumna
+- Avatar seleccionable
+- XP, monedas, vidas y racha
+- DACH-Karte
 - QuestPass
-- Biblioteca
-- Demo de Lehrerbereich
-- Progreso local con localStorage
-- PWA con service worker renovado
+- Lehrerbereich demo
+- PWA con service worker
