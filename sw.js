@@ -1,1 +1,4 @@
-const CACHE_NAME='deutschquest-v1';const ASSETS=['./','./index.html','./css/styles.css','./js/app.js','./manifest.webmanifest','./data/a1.json','./data/a2.json','./data/b1.json','./data/cities.json','./data/lessons.json','./icons/icon.svg'];self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)));self.skipWaiting()});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=>k!==CACHE_NAME?caches.delete(k):null))));self.clients.claim()});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request).catch(()=>caches.match('./index.html'))))});
+const CACHE='deutschquest-2-cache-v1';
+const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./data/vocabulary.js','./icons/icon-192.png','./icons/icon-512.png'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
+self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
