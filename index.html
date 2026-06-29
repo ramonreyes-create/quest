@@ -1,88 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DeutschQuest 2.0</title>
-  <meta name="theme-color" content="#2f6fed" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeutschQuest 3.0</title>
+  <meta name="theme-color" content="#253b80" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="app" class="app-shell">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Deutschprofis Lernwelt</p>
-        <h1>DeutschQuest 2.0</h1>
-      </div>
-      <div class="profile-card">
-        <div class="avatar">DQ</div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">DQ</div>
         <div>
-          <strong id="playerName">Schülerin</strong>
-          <span id="levelText">Level 1</span>
+          <h1>DeutschQuest</h1>
+          <p>Version 3.0</p>
         </div>
       </div>
-    </header>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard">🏠 Dashboard</button>
+        <button class="nav-btn" data-view="map">🗺️ DACH-Karte</button>
+        <button class="nav-btn" data-view="questpass">🛂 QuestPass</button>
+        <button class="nav-btn" data-view="bibliothek">📚 Bibliothek</button>
+        <button class="nav-btn" data-view="teacher">👩‍🏫 Lehrerbereich</button>
+      </nav>
+      <div class="install-box">
+        <p>Als App installieren</p>
+        <button id="installBtn" disabled>Installieren</button>
+      </div>
+    </aside>
 
-    <main class="layout">
-      <aside class="sidebar card">
-        <h2>QuestPass</h2>
-        <div class="stat-grid">
-          <div><span id="xp">0</span><small>XP</small></div>
-          <div><span id="streak">0</span><small>Streak</small></div>
-          <div><span id="hearts">5</span><small>Leben</small></div>
-          <div><span id="badges">0</span><small>Medaillen</small></div>
+    <main>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">The Living Classroom</p>
+          <h2 id="viewTitle">Hallo! Bereit für deine Reise?</h2>
         </div>
-        <div class="progress-wrap">
-          <div class="progress-label"><span>Fortschritt</span><span id="progressPercent">0%</span></div>
-          <div class="progress"><div id="progressBar"></div></div>
+        <div class="stats">
+          <span>❤️ <strong id="lives">5</strong></span>
+          <span>⭐ <strong id="xp">0</strong> XP</span>
+          <span>🔥 <strong id="streak">1</strong></span>
+          <span>Level <strong id="level">1</strong></span>
         </div>
-        <label class="name-box">Name der Schülerin
-          <input id="nameInput" type="text" placeholder="z. B. Emilia" />
-        </label>
-        <button id="saveName" class="secondary">Speichern</button>
-      </aside>
+      </header>
 
-      <section class="map card">
-        <div class="section-title">
+      <section id="dashboard" class="view active-view">
+        <div class="hero-card">
           <div>
-            <p class="eyebrow">Reise durch D-A-CH</p>
-            <h2>Wähle deine Stadt</h2>
+            <p class="eyebrow">Tagesmission</p>
+            <h3>Heute lernen wir in Freiburg</h3>
+            <p>Wortschatz, Satzbau und eine kleine Challenge. Sammle XP und schalte die nächste Stadt frei.</p>
+            <button class="primary" id="startMission">Lektion fortsetzen</button>
           </div>
-          <button id="reset" class="ghost">Neu starten</button>
+          <div class="hero-visual">🇩🇪</div>
         </div>
-        <div id="cityGrid" class="city-grid"></div>
+
+        <div class="grid three">
+          <article class="card">
+            <h3>Missionen</h3>
+            <ul class="task-list">
+              <li><span>10 Wörter üben</span><strong>+40 XP</strong></li>
+              <li><span>5 Sätze bauen</span><strong>+50 XP</strong></li>
+              <li><span>Mini-Challenge</span><strong>+80 XP</strong></li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Aktueller Fortschritt</h3>
+            <div class="progress"><span id="progressBar"></span></div>
+            <p><strong id="progressText">0%</strong> von Freiburg abgeschlossen</p>
+          </article>
+          <article class="card">
+            <h3>Medaille</h3>
+            <div class="badge">🏅</div>
+            <p id="badgeText">Noch keine Medaille. Starte deine Mission!</p>
+          </article>
+        </div>
+
+        <section class="practice card">
+          <div class="practice-head">
+            <div>
+              <p class="eyebrow">Wortschatztrainer</p>
+              <h3 id="questionTitle">Was bedeutet „die Stadt“?</h3>
+            </div>
+            <span id="questionCounter">1/6</span>
+          </div>
+          <div id="answers" class="answers"></div>
+          <p id="feedback" class="feedback"></p>
+        </section>
       </section>
 
-      <section class="trainer card">
-        <div class="section-title">
-          <div>
-            <p class="eyebrow" id="lessonMeta">A1 · Lektion 1</p>
-            <h2 id="lessonTitle">Start</h2>
+      <section id="map" class="view">
+        <div class="map-layout">
+          <div class="dach-map card">
+            <h3>DACH-Reise</h3>
+            <div id="cityPath" class="city-path"></div>
           </div>
-          <div class="mode-tabs">
-            <button class="mode active" data-mode="choice">Übersetzen</button>
-            <button class="mode" data-mode="write">Schreiben</button>
-            <button class="mode" data-mode="sentence">Satz</button>
+          <div class="city-card card" id="cityInfo">
+            <h3>Freiburg</h3>
+            <p>Start deiner Reise. Thema: Begrüßung, Schule, Familie und Stadt.</p>
+            <button class="primary" id="cityPracticeBtn">Üben</button>
           </div>
         </div>
+      </section>
 
-        <div id="questionCard" class="question-card">
-          <p id="questionType">Was bedeutet?</p>
-          <h3 id="questionWord">Hallo</h3>
-          <div id="options" class="options"></div>
-          <div id="writeArea" class="write-area hidden">
-            <input id="answerInput" type="text" placeholder="Antwort schreiben…" />
-            <button id="checkWrite">Prüfen</button>
-          </div>
-          <p id="feedback" class="feedback"></p>
-          <button id="next" class="primary hidden">Weiter</button>
+      <section id="questpass" class="view">
+        <div class="card">
+          <h3>QuestPass</h3>
+          <p>Jede abgeschlossene Stadt bekommt einen Stempel.</p>
+          <div id="passport" class="passport"></div>
+        </div>
+      </section>
+
+      <section id="bibliothek" class="view">
+        <div class="grid two" id="libraryGrid"></div>
+      </section>
+
+      <section id="teacher" class="view">
+        <div class="card">
+          <h3>Lehrerbereich</h3>
+          <p>Demo-Ansicht für den späteren Fortschritt der Schülerinnen.</p>
+          <table>
+            <thead><tr><th>Name</th><th>Stadt</th><th>XP</th><th>Fortschritt</th><th>Fehlerfokus</th></tr></thead>
+            <tbody id="teacherRows"></tbody>
+          </table>
         </div>
       </section>
     </main>
   </div>
 
-  <script src="data/vocabulary.js"></script>
+  <div id="toast" class="toast"></div>
   <script src="app.js"></script>
 </body>
 </html>
